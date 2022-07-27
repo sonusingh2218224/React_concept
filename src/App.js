@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Tables from "./Components/Tables";
+import Home from "./Layouts/Home";
+import Navbar from "./Layouts/Navbar";
+import Dashboard from "./Pages/Dashboard";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Protected from "./Route/Protected";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+
+      <Routes>
+        <Route path="/home" element={<Protected Component={Home} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/dashboard"
+          element={<Protected Component={Dashboard} />}
+        />
+        <Route path="/table" element={<Tables />} />
+      </Routes>
     </div>
   );
 }
