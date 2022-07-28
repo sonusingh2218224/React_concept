@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Tables from "./Components/Tables";
 import Home from "./Layouts/Home";
 import Navbar from "./Layouts/Navbar";
@@ -12,7 +13,7 @@ function App() {
   return (
     <div>
       <Navbar />
-
+       
       <Routes>
         <Route path="/home" element={<Protected Component={Home} />} />
         <Route path="/login" element={<Login />} />

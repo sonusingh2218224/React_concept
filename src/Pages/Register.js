@@ -1,82 +1,131 @@
-import React from 'react'
+import React from "react";
+import { makeStyles } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { useForm, Controller } from "react-hook-form";
+import Typography from "@mui/material/Typography";
 
-function Register() {
-  function handleChange(e){
-    console.log(e.target.value)
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: theme.spacing(2),
+
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "300px",
+    },
+    "& .MuiButtonBase-root": {
+      margin: theme.spacing(2),
+    },
+  },
+}));
+
+  
+ 
 
 
-  }
+const Form = ({ handleClose }) => {
+ 
+
+  
+ 
+  const classes = useStyles();
+  const { handleSubmit, control } = useForm();
+
+  const onSubmit = (datas) => {
+    console.log(datas);
+  };
+
   return (
     <>
-    <section className="vh-100" style={{backgroundColor:"#eee"}}>
-  <div className="container h-100">
-    <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col-lg-12 col-xl-11">
-        <div className="card text-black"  style={{borderRadius:"25px"}}>
-          <div className="card-body p-md-5">
-            <div className="row justify-content-center">
-              <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-
-                <form className="mx-1 mx-md-4">
-
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" onChange={handleChange} />
-                      <label className="form-label" >Your Name</label>
-                    </div>
-                  </div>
-
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" className="form-control" name='email' onChange={handleChange}/>
-                      <label className="form-label" >Your Email</label>
-                    </div>
-                  </div>
-
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" className="form-control" onChange={handleChange}/>
-                      <label className="form-label">Password</label>
-                    </div>
-                  </div>
-
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" className="form-control" onChange={handleChange}/>
-                      <label className="form-label" >Repeat your password</label>
-                    </div>
-                  </div>
-
-                  <div className="form-check d-flex justify-content-center mb-5">
-                    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" onChange={handleChange}/>
-                    <label className="form-check-label" >
-                      I agree all statements in <a href="#!">Terms of service</a>
-                    </label>
-                  </div>
-
-                  <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" className="btn btn-primary btn-lg">Register</button>
-                  </div>
-
-                </form>
-
-              </div>
-              
-            </div>
-          </div>
+      <Typography
+        variant="h4"
+        style={{ textAlign: "center", marginTop: "3rem" }}
+      >
+        SignUp
+      </Typography>
+      <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="firstName"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="First Name"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+            />
+          )}
+          rules={{ required: "First name required" }}
+        />
+        <Controller
+          name="lastName"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Last Name"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+            />
+          )}
+          rules={{ required: "Last name required" }}
+        />
+        <Controller
+          name="email"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Email"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="email"
+            />
+          )}
+          rules={{ required: "Email required" }}
+        />
+        <Controller
+          name="password"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Password"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="password"
+            />
+          )}
+          rules={{ required: "Password required" }}
+        />
+        <div>
+          <Button variant="contained" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button type="submit" variant="contained" color="primary">
+            Login
+          </Button>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </form>
     </>
-  )
-}
+  );
+};
 
-export default Register
+export default Form;

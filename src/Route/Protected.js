@@ -9,7 +9,7 @@ function Protected(props) {
     let login = localStorage.getItem("user");
     
     if (!login) {
-      navigate("/register");
+      navigate("/login");
     }
   },[navigate]);
 

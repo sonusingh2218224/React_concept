@@ -1,14 +1,10 @@
-import React from 'react'
-import Typography from '@mui/material/Typography'
+import React from "react";
+import Editing from "../Components/Inputs/Editing";
+
 function Home() {
-  return (
-    <>
-    
-  <Typography variant='h1'>Hello</Typography>
-    
-    
-    </>
-  )
+  return <>
+  <Editing/>
+  </>;
 }
 
-export default Home
+export default Home;
