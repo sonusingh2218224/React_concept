@@ -5,6 +5,7 @@ import http from "../Config/AxiosConfig";
 import swal from "sweetalert2";
 import sorting from "../Utils.js/sorting";
 
+
 import {
   TableContainer,
   TableHead,
@@ -12,7 +13,6 @@ import {
   Button,
   ButtonGroup,
   TablePagination,
-  
 } from "@mui/material";
 
 import Paper from "@mui/material/Paper";
@@ -21,9 +21,13 @@ import TableBody from "@mui/material/TableBody/TableBody";
 import "../CSS/style.css";
 import Helper from "../Helper";
 
+
 function Tables() {
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState(false);
+
+   
+
 
   //pagination
   const [page, setPage] = useState(0);
@@ -36,14 +40,14 @@ function Tables() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+//sorting
   const [sortBy, setSortBy] = useState();
   const [sortDataType, setSortDataType] = useState("number");
   const [sortOrder, setSortOrder] = useState();
 
-  
   users && sorting(users, sortBy, sortDataType, sortOrder);
 
-  //sorting
+  
   const handleSort = (col, type) => {
     if (!(sortBy === col)) {
       setSortOrder(1);
@@ -55,7 +59,6 @@ function Tables() {
       setSortDataType(type);
     }
   };
-
 
   //handle delete
   const HandleDelete = (id) => {
@@ -99,16 +102,6 @@ function Tables() {
     setUsers(base_api_url);
   }, []);
 
-
-
-  
-  
-  
-
-
-
- 
-
   return (
     <>
       <Typography variant="h4" style={{ textAlign: "center" }}>
@@ -118,10 +111,30 @@ function Tables() {
         <Table sx={{ minWidth: 650 }} arial-label="simple table">
           <TableHead>
             <TableRow className="tablerow">
-              <TableCell align="left" onClick={() => handleSort("name", "string")}>Posted</TableCell>
-              <TableCell align="left"  onClick={() => handleSort("name", "string")}>name</TableCell>
-              <TableCell align="left" onClick={() => handleSort("email", "string")}>Email&nbsp;(g)</TableCell>
-              <TableCell align="left" onClick={() => handleSort("body", "string")}>Body&nbsp;(g)</TableCell>
+              <TableCell
+                align="left"
+                onClick={() => handleSort("name", "string")}
+              >
+                Posted
+              </TableCell>
+              <TableCell
+                align="left"
+                onClick={() => handleSort("name", "string")}
+              >
+                name
+              </TableCell>
+              <TableCell
+                align="left"
+                onClick={() => handleSort("email", "string")}
+              >
+                Email&nbsp;(g)
+              </TableCell>
+              <TableCell
+                align="left"
+                onClick={() => handleSort("body", "string")}
+              >
+                Body&nbsp;(g)
+              </TableCell>
               <TableCell align="left">Actions&nbsp;(g)</TableCell>
             </TableRow>
           </TableHead>
@@ -132,15 +145,14 @@ function Tables() {
                 <TableRow
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                > 
-               
+                >
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
                   <TableCell align="left">{row.name}</TableCell>
                   <TableCell align="left">{row.email}</TableCell>
                   <TableCell align="left">{row.body}</TableCell>
-                
+
                   <ButtonGroup
                     variant="outlined"
                     aria-label="outlined button group"

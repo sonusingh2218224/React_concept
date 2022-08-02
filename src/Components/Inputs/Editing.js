@@ -14,7 +14,7 @@ function Editing() {
           width: "100%",
           height: "30vh",
         }}
-      >
+      > 
         <Typography variant="h2" style={{ textAlign: "center" }}>
           Welcome{" "}
         </Typography>

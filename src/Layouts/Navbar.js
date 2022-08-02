@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { CartContext } from "../App";
 
 function Navbar() {
+  const { cart, setCart } = useContext(CartContext);
+
+  useEffect(() => {
+    if (localStorage.getItem("newCartItems")) {
+      let data = localStorage.getItem("newCartItems");
+      setCart(JSON.parse(data));
+    }
+  },[setCart]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,6 +51,11 @@ function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/table">
                   Table
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cart">
+                  Cart <Badge>{cart && cart.items.length}</Badge>
                 </Link>
               </li>
             </ul>

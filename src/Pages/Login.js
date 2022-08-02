@@ -62,7 +62,6 @@ function Login() {
     e.preventDefault();
     localStorage.clear();
     window.location.href = "/login";
-   
   };
 
   const handleChange = (e) => {
