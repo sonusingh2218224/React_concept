@@ -8,6 +8,7 @@ function Protected(props) {
   useEffect(() => {
     let login = localStorage.getItem("user");
     
+    
     if (!login) {
       navigate("/login");
     }
@@ -21,3 +22,8 @@ function Protected(props) {
 }
 
 export default Protected;
+// import { Navigate, Outlet } from "react-router-dom";
+// const Protected = ({ isLoggedIn }) => {
+//   return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+// };
+// export default Protected;

@@ -1,11 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 // import { Card, Image } from "react-bootstrap";
 
 import Helper from "../Helper";
 import RecipeReviewCard from "./RecipeReviewCard";
-
-
 
 function Dashboard() {
   const [products, SetProducts] = useState([]);
@@ -27,17 +24,12 @@ function Dashboard() {
 
   return (
     <div className="container">
-    <div className="row">
-    {products.map((item,index) => {
-      return (
-        <RecipeReviewCard item={item} key={index}/>
-       
-       );
-    })}
-</div>
-</div>
-
-      
+      <div className="row">
+        {products.map((item, index) => {
+          return <RecipeReviewCard item={item} key={index} />;
+        })}
+      </div>
+    </div>
   );
 }
 

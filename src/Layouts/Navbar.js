@@ -11,7 +11,7 @@ function Navbar() {
       let data = localStorage.getItem("newCartItems");
       setCart(JSON.parse(data));
     }
-  },[setCart]);
+  }, [setCart]);
 
   return (
     <>
@@ -53,9 +53,10 @@ function Navbar() {
                   Table
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">
-                  Cart <Badge>{cart && cart.items.length}</Badge>
+                  cart  <Badge>{cart && cart.items.length}</Badge>
                 </Link>
               </li>
             </ul>

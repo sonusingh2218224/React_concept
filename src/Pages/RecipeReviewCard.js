@@ -1,19 +1,19 @@
-import * as React  from "react";
+import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { CartContext } from "../App";
-
-
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,7 +27,6 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard({ item }) {
-
   const { cart, setCart } = React.useContext(CartContext);
   const [expanded, setExpanded] = React.useState(false);
   // console.log(item, "===============");
@@ -70,8 +69,7 @@ export default function RecipeReviewCard({ item }) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-
-          <IconButton onClick={()=>handleCart(item)}>
+          <IconButton onClick={() => handleCart(item)}>
             <AddShoppingCartIcon />
           </IconButton>
 
