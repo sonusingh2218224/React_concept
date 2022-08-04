@@ -1,5 +1,8 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   Card,
   CardHeader,
@@ -26,20 +29,24 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ item }) {
+function RecipeReviewCard({ item }) {
   const { cart, setCart } = React.useContext(CartContext);
+
   const [expanded, setExpanded] = React.useState(false);
   // console.log(item, "===============");
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const notify = () => toast("Product is Added"); 
 
   const handleCart = (product) => {
     const newCartItems = { ...cart };
     newCartItems.items = [...cart.items, { ...product, qty: 1 }];
     //set ke samay stringify
     localStorage.setItem("newCartItems", JSON.stringify(newCartItems));
+
     setCart(newCartItems);
+
   };
 
   return (
@@ -70,7 +77,8 @@ export default function RecipeReviewCard({ item }) {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton onClick={() => handleCart(item)}>
-            <AddShoppingCartIcon />
+            <AddShoppingCartIcon onClick={notify} />
+            <ToastContainer position="top-center"  autoClose="1000" />
           </IconButton>
 
           <ExpandMore
@@ -92,3 +100,5 @@ export default function RecipeReviewCard({ item }) {
     </div>
   );
 }
+
+export default  RecipeReviewCard

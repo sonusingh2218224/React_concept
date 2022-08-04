@@ -13,7 +13,7 @@ function Dashboard() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+      
         SetProducts(data);
       });
   };
