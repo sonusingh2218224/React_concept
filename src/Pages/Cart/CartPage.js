@@ -57,7 +57,7 @@ function Cart() {
         </thead>
         <tbody>
           {cart.items?.map((item, id) => (
-            <tr key={id}>
+            <tr key={id} >
               <td><img src={item.image} alt="" style={{width:"40px"}}/></td>
               <td>{item.title}</td>
               <td>{item.price}</td>

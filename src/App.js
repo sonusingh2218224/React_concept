@@ -23,7 +23,7 @@ function App() {
       <CartContext.Provider value={{ cart, setCart }}>
         <BrowserRouter>
           <Navbar />
-
+        
           <Routes>
             <Route
               excat

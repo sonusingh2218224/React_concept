@@ -1,47 +1,30 @@
+import React from "react";
+import { Button } from "react-bootstrap";
 
 
-import React, { useContext } from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
-import { CartContext } from '../App';
-
-
+import Checkouts from "./Chekout/Checkouts";
+import { useNavigate } from "react-router-dom";
 
 function Chekout() {
-    const { cart, setCart } = useContext(CartContext);
-    
-  return (
-    <Container>
-        
-      <Row>
-      {cart.items?.map((item) => (
-       <div >
+  const navigate = useNavigate();
 
-            <img  alt='' src={item.image} style={{width:"100px"}}/>
-            <div>
-         <tr>
-            <th>{item.title}</th>
-            <th>{item.price}</th>
-            <th>{item.total}</th>
-        </tr>
-       </div>
-    </div>
-       
-     
-       
-     
-      ))}
-         </Row>
-   
-        
-   
-  
-      <Row>
-        <Col sm>sm=true</Col>
-        <Col sm>sm=true</Col>
-        <Col sm>sm=true</Col>
-      </Row>
-    </Container>
-  )
+  const handleback = () => {
+    navigate("/cart");
+  };
+
+  return (
+    <>
+      <Button onClick={handleback} className="m-2 " size="lg">
+        Back
+      </Button>
+      
+        <div >
+          {" "}
+          <Checkouts />
+        </div>
+      
+    </>
+  );
 }
 
-export default Chekout
+export default Chekout;

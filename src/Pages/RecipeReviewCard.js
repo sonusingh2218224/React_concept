@@ -37,7 +37,10 @@ function RecipeReviewCard({ item }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const notify = () => toast("Product is Added"); 
+
+const notify=()=>{
+  toast("added sucessfully");
+}
 
   const handleCart = (product) => {
     const newCartItems = { ...cart };
@@ -46,7 +49,6 @@ function RecipeReviewCard({ item }) {
     localStorage.setItem("newCartItems", JSON.stringify(newCartItems));
 
     setCart(newCartItems);
-
   };
 
   return (
@@ -77,8 +79,8 @@ function RecipeReviewCard({ item }) {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton onClick={() => handleCart(item)}>
-            <AddShoppingCartIcon onClick={notify} />
-            <ToastContainer position="top-center"  autoClose="1000" />
+            <AddShoppingCartIcon onClick={notify}  />
+            <ToastContainer position="top-center" autoClose="1000" />
           </IconButton>
 
           <ExpandMore
@@ -101,4 +103,4 @@ function RecipeReviewCard({ item }) {
   );
 }
 
-export default  RecipeReviewCard
+export default RecipeReviewCard;
